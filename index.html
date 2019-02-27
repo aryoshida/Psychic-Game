@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<h1>The Psychic Game</h1>
+
+<h3>Guess what letter the computer is thinking</h3>
+
+<h3>Wins: <span id="wins"></span></h3>
+
+<h3>Losses: <span id="losses"></span></h3>
+
+<h3>Guesses Remaining: <span id="guessesRemaining"></span></h3>
+
+<h3>Guesses made: <span id="guessesMade"></span></h3>
+
+
+
+
+<script type="text/javascript">
+
+    var wins = 0;
+    var losses = 0;
+    var guesses = 10;
+    var guessesMade = [];
+
+    var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    var userLetter;
+    var computerLetter = letters[Math.floor(Math.random() * letters.length)];
+    console.log(computerLetter);
+
+    var reset=function(){
+        guesses = 10;
+        guessesMade = [];
+        computerLetter = letters[Math.floor(Math.random() * letters.length)];
+        console.log(computerLetter);
+    }
+
+    var update=function() {
+        var guessesMadeHTMLElement = document.getElementById("guessesMade");
+        guessesMadeHTMLElement.innerHTML = guessesMade;
+        var totalWins = document.getElementById("wins");
+        totalWins.innerHTML = wins;
+        var totalLosses = document.getElementById("losses");
+        totalLosses.innerHTML = losses;
+        var guessesLeft = document.getElementById("guessesRemaining");
+        guessesLeft.innerHTML = guesses;
+    }
+    update();
+    
+    var isKeyValid=function(key){
+        // if key is not letter, return false
+        // else return true
+        for(var index in letters){
+            letter = letters[index];
+            if(key == letter)
+                return true;
+        }
+        
+        return false;
+    }
+
+    var isGuessMade= function(key){
+        for(var index = 0; index < guessesMade.length; index++){
+            guess = guessesMade[index];
+            if(key == guess){
+                alert("No repeat guesses");
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    document.onkeyup = function(event){
+        
+        userLetter = event.key.toUpperCase();
+
+        if(!isKeyValid(userLetter)) {
+            alert("Please enter a letter: "+userLetter);
+            return; //skip if not valid
+        }
+        if(isGuessMade(userLetter)){
+            return; //skip if guess has already been made
+        }
+        
+        if (userLetter === computerLetter){
+            alert("You Win!")
+            wins++;
+            reset();
+        } else if (guesses > 0){ 
+            guesses--;
+            guessesMade.push(userLetter);
+        } else {
+            alert("You Lose!")
+            losses++;
+            reset();
+        }
+        update();
+    }
+
+
+
+</script>
+
+</body>
+</html>
