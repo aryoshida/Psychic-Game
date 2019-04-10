@@ -31,9 +31,9 @@
                             </button>
                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                 <div class="navbar-nav">
-                                    <a class="nav-item nav-link" href="https://aryoshida.github.io/Bootstrap-Portfolio/index.html">About</a>
-                                    <a class="nav-item nav-link active" href="https://aryoshida.github.io/Bootstrap-Portfolio/">Portfolio<span class="sr-only">(current)</span></a>
-                                    <a class="nav-item nav-link" href="https://aryoshida.github.io/Bootstrap-Portfolio/contact.html">Contact</a>
+                                    <a class="nav-item nav-link" href="https://aryoshida.github.io/">About</a>
+                                    <a class="nav-item nav-link" href="https://aryoshida.github.io/portfolio.html">Portfolio</a>
+                                    <a class="nav-item nav-link" href="https://aryoshida.github.io/contact.html">Contact</a>
                                 </div>
                             </div>
                         </nav>
@@ -47,29 +47,26 @@
         <div class="clearfix"></div>
 
         <div class="container">
-                <div class="row">
-                    <section class="portfolio">
-    
-                        <h1>Portfolio</h1>
-                        <hr>
+            <div class="row">
+                <section class="portfolio">
 
-                        <h1>The Psychic Game</h1>
+                    <h1>The Psychic Game</h1>
 
-                        <h3>Guess what letter the computer is thinking</h3>
-                
-                        <h3>Wins: <span id="wins"></span></h3>
-                
-                        <h3>Losses: <span id="losses"></span></h3>
-                
-                        <h3>Guesses Remaining: <span id="guessesRemaining"></span></h3>
-                
-                        <h3>Guesses made: <span id="guessesMade"></span></h3>
-                        
-                        
-                    </section>
-                </div>
-    
+                    <h3>Guess what letter the computer is thinking</h3>
+            
+                    <h3>Wins: <span id="wins"></span></h3>
+            
+                    <h3>Losses: <span id="losses"></span></h3>
+            
+                    <h3>Guesses Remaining: <span id="guessesRemaining"></span></h3>
+            
+                    <h3>Guesses made: <span id="guessesMade"></span></h3>
+                    
+                    
+                </section>
             </div>
+    
+        </div>
 
 
 
@@ -84,7 +81,7 @@
 
     var wins = 0;
     var losses = 0;
-    var guesses = 10;
+    var guesses = 9;
     var guessesMade = [];
 
     var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -93,7 +90,7 @@
     console.log(computerLetter);
 
     var reset=function(){
-        guesses = 10;
+        guesses = 9;
         guessesMade = [];
         computerLetter = letters[Math.floor(Math.random() * letters.length)];
         console.log(computerLetter);
